@@ -1,0 +1,282 @@
+<html>
+<head>
+<style type="text/css">
+.c{
+    margin: 200px auto;
+    width: 600px;
+    
+    height: 600px;
+    
+
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.first td:nth-child(1){
+    width: 200px;
+    height: 200px;
+    background-image: url(水果精灵图.png);
+    background-position: -98px -83px;
+}
+.first td:nth-child(2){
+    width: 200px;
+    height: 200px;
+    background-image: url(水果精灵图.png);
+    background-position: -455px -91px;
+}
+.first td:nth-child(3){
+    width: 200px;
+    height: 200px;
+    background-image: url(水果精灵图.png);
+    background-position: -807px -91px;
+}
+.second td:nth-child(1){
+    width: 200px;
+    height: 200px;
+    background-image: url(水果精灵图.png);
+    background-position: -1247px -96px;
+}
+.second td:nth-child(3){
+    width: 200px;
+    height: 200px;
+    background-image: url(水果精灵图.png);
+    background-position: -118px -482px;
+}
+.third td:nth-child(1){
+    width: 200px;
+    height: 200px;
+   background-image: url(水果精灵图.png);
+   background-position: -417px -504px;
+   
+}
+.third td:nth-child(2){
+    width: 200px;
+    height: 200px;
+   background-image: url(水果精灵图.png);
+   background-position: -819px -475px;
+}
+.third td:nth-child(3){
+    width: 200px;
+    height: 200px;
+   background-image: url(水果精灵图.png);
+   background-position: -1199px -511px;
+}
+.second td:nth-child(2){
+    width: 10px;
+    height: 100px;
+    text-align: center;
+    line-height: 200px;
+
+    
+}
+.weizhi{
+    width: 200px;
+    height: 230px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    
+    
+}
+.lunbo{
+    width: 1400px;
+    margin: 0 auto;
+    height: 230px;
+    position: absolute;
+    left: -200px;
+   
+    
+
+    
+}
+ul{
+    
+   
+}
+.lunbo li{
+    float: left;
+    list-style:none;
+   
+}
+li img{
+    width: 200px;
+    height: 220px;
+}
+
+img{
+   
+}
+.foot{
+    height: 500px;
+}
+.dian{
+    display: inline-block;
+    position: absolute;
+   
+    width:  130px;
+    height: 40px;
+    top: 210px;
+    left: 40px;
+    background-color: rgba(0, 41, 128, 0.3);
+}
+.dian li{
+    float: left;
+    width: 20px;
+    height: 20px;
+   position: relative;
+    left: 10px;
+    top: 0px;
+    border-radius: 50%;
+    background-color: rgba(212, 105, 186, 0.6);
+    font-size:30px;
+    margin: 0 2px;
+    line-height:20px;
+    list-style:none;
+}
+.dian  .active{
+    background-color: green;
+}
+</style>
+</head>
+
+<body>
+   
+        <table  class="c">
+        <tr class="first">
+            <td class="fruit"></td>
+            <td class="fruit"></td>
+            <td class="fruit"></td>
+        </tr>
+        <tr class="second">
+            <td class="fruit"></td>
+            <td class="start">开始抽奖</td>
+            <td class="fruit"></td>
+        </tr>
+        <tr class="third">
+            <td class="fruit"></td>
+            <td class="fruit"></td>
+            <td class="fruit"></td>
+        </tr>
+    </table>
+    
+<div class="weizhi">
+   
+        <ul class="lunbo">
+            <li>  <img src="西瓜.png" alt=""></li>
+            <li>  <img src="橙子.png" alt=""></li>
+            <li> <img src="火龙果.png" alt=""></li>
+            <li> <img src="蓝莓.png" alt=""></li>
+            <li> <img src="猕猴桃.png" alt=""></li>
+            <li> <img src="西瓜.png" alt=""></li>
+            <li></li>
+        </ul>
+        <ul class="dian">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+</div>
+
+    <div class="foot" ></div>
+
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+    let num=1;
+    setInterval(() => {
+        num++
+      $('.lunbo').animate({left:200*-num} ,500)
+      console.log(num)
+      if (num==5) {
+        $('.lunbo').css('left',0) 
+        num=0
+          
+      }
+    }, 2000);
+    var i=0
+    var timer=null
+  if(timer==null){setInterval(() => {
+        for (let j = 0; j < 5; j++) {
+            $('.dian li').eq(j).removeClass('active')
+            
+        }
+        i++
+        $('.dian li').eq(i).addClass('active')
+        if (i>4) {
+            i=0
+            $('.dian li').eq(i).addClass('active')
+        }
+    }, 2000);
+}
+        $('.dian li').click(function(){
+          
+            var idx=$(this).index()
+            for (let j = 0; j < 5; j++) {
+            $('.dian li').eq(j).removeClass('active')
+            
+        }
+        $('.lunbo').animate({left:200*-(idx+1)} ,500)
+        $('.dian li').eq(idx).addClass('active')
+        })
+        
+
+        
+            
+            
+        
+      
+
+
+
+
+
+
+
+
+
+
+   var start= document.getElementsByClassName('start')[0]
+   var fruit=document.getElementsByClassName('fruit')
+ 
+   
+
+   start.onclick=function () {
+     var num=0
+     var timer=null
+     if (timer==null) {
+        timer= setInterval(() => {
+        
+           num++
+           var i=Math.round(Math.random()*7)
+         //   fruit.forEach(element => {
+         //     fruit[i].style.border='none'
+               
+         //   });
+           for (let i = 0; i < fruit.length; i++) {
+             fruit[i].style.border='none'
+               
+           }
+           
+           fruit[i].style.border='1px solid orangered'
+           console.log(num)
+           if (num>10) {
+            clearInterval(timer)
+            
+             timer==null
+          
+           }
+           
+      }, 100);
+     }
+     
+     
+      
+    
+       
+   }
+</script>
+</html>
